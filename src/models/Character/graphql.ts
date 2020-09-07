@@ -1,4 +1,4 @@
-import Character from '../../models/Character';
+import { Character } from '.';
 
 export const typeDef = `
 extend type Query {

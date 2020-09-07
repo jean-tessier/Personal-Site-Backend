@@ -6,7 +6,7 @@ import generateGraphQLSchema from './utils/generateGraphQLSchema';
 import {
   typeDef as Character,
   resolvers as characterResolvers,
-} from './graphql_schema/Character';
+} from './models/Character';
 
 const config = loadConfig();
 
