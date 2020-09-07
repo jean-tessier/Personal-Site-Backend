@@ -6,17 +6,17 @@ import cors from 'cors';
 import morgan from 'morgan';
 import 'colors';
 
-import schema from './schema';
 import connectDB from './utils/connectDB';
 import { ConfigType } from './config/config';
+import { GraphQLSchema } from 'graphql';
 
-const startServer = (config: ConfigType) => {
+const startServer = (config: ConfigType, graphqlSchema: GraphQLSchema) => {
   const dbConfig = config.database;
 
   const db = connectDB(dbConfig.ip, dbConfig.port.toString(), dbConfig.name);
   const app = express();
   const server = new ApolloServer({
-    schema,
+    schema: graphqlSchema,
     validationRules: [depthLimit(7)],
   });
 
