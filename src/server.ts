@@ -1,47 +1,44 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import depthLimit from 'graphql-depth-limit';
-import { createServer } from 'http';
 import compression from 'compression';
 import cors from 'cors';
-import path from 'path';
-import mongoose from 'mongoose';
+import morgan from 'morgan';
+import 'colors';
 
 import schema from './schema';
 import connectDB from './utils/connectDB';
-import loadConfig from './utils/loadConfig';
 import { ConfigType } from './config/config';
 
-const config = loadConfig();
-const dbConfig = config.database;
-// TODO: this should be configurable
-// const ROOT = path.join(__dirname, 'client', 'build');
-const ROOT = config.staticDir;
+const startServer = (config: ConfigType) => {
+  const dbConfig = config.database;
 
-const db = connectDB(dbConfig.ip, dbConfig.port.toString(), dbConfig.name);
+  const db = connectDB(dbConfig.ip, dbConfig.port.toString(), dbConfig.name);
+  const app = express();
+  const server = new ApolloServer({
+    schema,
+    validationRules: [depthLimit(7)],
+  });
 
-const app = express();
-const server = new ApolloServer({
-  schema,
-  validationRules: [depthLimit(7)],
-});
+  if (config.env === 'development') {
+    app.use(morgan('dev'));
+  }
+  app.use('*', cors());
+  app.use(compression());
+  app.use(express.static(config.staticDir));
 
-app.use('*', cors());
-app.use(compression());
-app.use(express.static(ROOT));
+  server.applyMiddleware({ app, path: '/graphql' });
+  app.get('*', (req, res) => {
+    res.sendFile('index.html', { root: config.staticDir });
+  });
 
-server.applyMiddleware({ app, path: '/graphql' });
-app.get('*', (req, res) => {
-  res.sendFile('index.html', { root: ROOT });
-  // res.end('TEST');
-});
+  const httpServer = app.listen(config.port, () =>
+    console.log(
+      `Server running on http://${config.ip}:${config.port}`.yellow.bold
+    )
+  );
 
-const httpServer = createServer(app);
+  return httpServer;
+};
 
-httpServer.listen({ port: config.port }, (): void =>
-  console.log(
-    `\nGraphQL is no running on http://localhost:${config.port}/graphql`
-  )
-);
-
-const buildServer = (config: ConfigType) => {};
+export default startServer;
