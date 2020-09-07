@@ -1,8 +1,0 @@
-type Character {
-  name: String!
-}
-
-type Query {
-  helloWorld: String!
-  characters: [Character!]
-}
