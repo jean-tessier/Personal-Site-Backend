@@ -7,11 +7,15 @@ import {
   typeDef as Character,
   resolvers as characterResolvers,
 } from './models/Character';
+import {
+  typeDef as Project,
+  resolvers as projectResolvers,
+} from './models/Project';
 
 const config = loadConfig();
 
-const typeDefs = [Character];
-const resolvers = [characterResolvers];
+const typeDefs = [Character, Project];
+const resolvers = [characterResolvers, projectResolvers];
 const graphqlSchema = generateGraphQLSchema(typeDefs, resolvers);
 
 const server = startServer(config, graphqlSchema);

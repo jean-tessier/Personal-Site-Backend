@@ -3,8 +3,18 @@ import convict from 'convict';
 import convict_format_with_validator from 'convict-format-with-validator';
 convict.addFormats(convict_format_with_validator);
 import path from 'path';
+import dotenv from 'dotenv';
 
 const defaultStaticDir = path.join('client', 'build');
+
+const dotenvResult = dotenv.config({
+  path: path.join(__dirname, `env.${process.env.NODE_ENV}`),
+});
+if (!!dotenvResult.error) {
+  console.warn(
+    `There was an issue loading the .env file: ${dotenvResult.error}`.yellow
+  );
+}
 
 const configSchema = convict({
   configFile: {
@@ -41,20 +51,26 @@ const configSchema = convict({
   database: {
     ip: {
       doc: 'The IP address for the database connection',
-      format: 'ipaddress',
+      format: String,
       default: '127.0.0.1',
       env: 'DB_ADDRESS',
     },
     port: {
       doc: 'The port for the database connection',
       format: 'port',
-      default: 27017,
+      default: undefined,
       env: 'DB_PORT',
     },
     name: {
       doc: 'The db on the mongo server to use',
       format: String,
       default: 'development',
+      env: 'DB_NAME',
+    },
+    requiresAuthentication: {
+      doc: 'Whether or not the mongo server requires authentication to access',
+      format: Boolean,
+      default: false,
     },
   },
 });

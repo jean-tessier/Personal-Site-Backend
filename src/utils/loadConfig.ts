@@ -1,4 +1,6 @@
 import path from 'path';
+import dotenv from 'dotenv';
+import 'colors';
 
 import { default as config, ConfigType } from '../config/config';
 
@@ -21,7 +23,9 @@ const selectConfigFile = (configuration: ConfigType) => {
 
 const loadConfig = () => {
   const configFile = selectConfigFile(config.get());
-  config.loadFile(configFile);
+  if (!!configFile) config.loadFile(configFile);
+
+  console.log(config.get());
 
   config.validate();
 

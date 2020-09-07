@@ -2,8 +2,16 @@ import mongoose from 'mongoose';
 
 // const URL = 'mongodb://127.0.0.1:27017/game-of-thrones';
 
-const connectDB = (host: string, port: string, db: string) => {
-  const url = `mongodb://${host}:${port}/${db}`;
+const connectDB = (host: string, db: string, port?: string) => {
+  const mongoUserInfo =
+    !!process.env.DB_USER && !!process.env.DB_PASS
+      ? `${process.env.DB_USER}:${process.env.DB_PASS}@`
+      : '';
+  const uriPrefix = !!port ? `mongodb` : `mongodb+srv`;
+  const mongoAddress = `${host}` + (!!port ? `:${port}` : '');
+  const url = `${uriPrefix}://${mongoUserInfo}${mongoAddress}/${db}`;
+  // const url = `mongodb://${host}:${port}/${db}`;
+  console.log(`Connecting to ${url}`.bgYellow);
   mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

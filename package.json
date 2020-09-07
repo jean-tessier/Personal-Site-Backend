@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node 'dist/app.js'",
-    "build": "tsc -p . && ncp src/schema dist/schema",
+    "build": "tsc -p . && copyfiles src/config/** dist/config/ -e '**/*.ts' -f",
     "start:dev": "yarn build:dev",
     "build:dev": "nodemon 'src/app.ts' --exec 'ts-node' src/server/ts -e ts,graphql"
   },
@@ -15,6 +15,7 @@
     "@types/mongoose": "^5.7.36",
     "@types/morgan": "^1.9.1",
     "@types/node": "^14.6.3",
+    "copyfiles": "^2.3.0",
     "graphql-depth-limit": "^1.1.0",
     "graphql-import": "^1.0.2",
     "graphql-import-node": "^0.0.4",
@@ -30,11 +31,11 @@
     "convict": "^6.0.0",
     "convict-format-with-validator": "^6.0.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^15.3.0",
     "http": "^0.0.1-security",
     "lodash": "^4.17.20",
-    "mongoose": "^5.10.3",
-    "ncp": "^2.0.0"
+    "mongoose": "^5.10.3"
   }
 }

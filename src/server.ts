@@ -13,7 +13,7 @@ import { GraphQLSchema } from 'graphql';
 const startServer = (config: ConfigType, graphqlSchema: GraphQLSchema) => {
   const dbConfig = config.database;
 
-  const db = connectDB(dbConfig.ip, dbConfig.port.toString(), dbConfig.name);
+  const db = connectDB(dbConfig.ip, dbConfig.name, dbConfig.port);
   const app = express();
   const server = new ApolloServer({
     schema: graphqlSchema,
