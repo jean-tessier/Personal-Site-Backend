@@ -1,4 +1,4 @@
-import Project from './Project';
+import { PersonalProject, ProfessionalProject } from './Project';
 import { typeDef, resolvers } from './graphql';
 
-export { Project, typeDef, resolvers };
+export { PersonalProject, ProfessionalProject, typeDef, resolvers };

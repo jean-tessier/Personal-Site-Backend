@@ -1,0 +1,115 @@
+{
+  "personal": [
+    {
+      "name": "This Website!",
+      "link": "https://github.com/jean-tessier/jeanmtessier",
+      "techStack": [
+        "TypeScript/JavaScript",
+        "React.js",
+        "Express.js",
+        "Node.js",
+        "HTML5",
+        "SCSS/CSS"
+      ],
+      "summary": "My personal website: for recording and sharing my programming accomplishments, both personal and professional.",
+      "knowledgeGained": [
+        "How to define a sensible architecture for a React.js website",
+        "How to fully launch a Node.js website, from domain name registration to hosting"
+      ]
+    },
+    {
+      "name": "Cocos2d-x Tiled Framework",
+      "link": "https://github.com/jean-tessier/TiledFramework",
+      "techStack": ["C++", "Cocos2d-x"],
+      "summary": "Extending utility provided by the Cocos2D-X game development platform, this framework is intended to make 2D Tile-based game development simpler. Included is a simple proof-of-concept game.",
+      "knowledgeGained": [
+        "Best practices for C++ constructors",
+        "How to strictly define functions in C++",
+        "How to implement simple AI",
+        "How to use valgrind to review code for memory leaks"
+      ]
+    },
+    {
+      "name": "Simple Ray Tracer",
+      "link": "https://github.com/jean-tessier/raytrace",
+      "techStack": ["C++"],
+      "summary": "A raytracing program for rendering three-dimensional scenes.",
+      "knowledgeGained": [
+        "The fundamentals of raytracing",
+        "The fundamentals of Makefiles",
+        "The fundamentals of Test Driven Development using the Catch testing library"
+      ]
+    },
+    {
+      "name": "String Genetic Algorithm",
+      "link": "https://github.com/jean-tessier/TextGeneticAlgorithm",
+      "techStack": ["C#"],
+      "summary": "My favorite pet project - a genetic algorithm - written in C# to familiarize myself with the popular language while exemplifying the power of genetic algorithms for machine learning in an easy-to-visualize format.",
+      "knowledgeGained": [
+        "How to read and write C#.",
+        "How to utilize Visual Studio Unit Testing Libraries."
+      ]
+    },
+    {
+      "name": "Memory Allocator",
+      "link": "https://github.com/jean-tessier/MemoryAllocator",
+      "techStack": ["C"],
+      "summary": "A memory allocator, similar to that of the standard libraries, written in C.",
+      "knowledgeGained": [
+        "Intimate knowledge of how memory allocation is handled by the computer",
+        "How to be proficient with pointers",
+        "How to handle garbage collection",
+        "How to define structs to take advantage of memory alignment"
+      ]
+    }
+  ],
+  "professional": [
+    {
+      "name": "MERN Stack App",
+      "techStack": [
+        "MongoDB",
+        "Express.js",
+        "React.js",
+        "Node.js",
+        "GraphQL",
+        "SQL",
+        "TypeScript/JavaScript",
+        "SCSS/CSS",
+        "HTML5"
+      ],
+      "length": "1 year, 2 months",
+      "summary": "A web app platform and API for a large automotive OEM intended to centralize common digital work operations and reduce cost of new, web-ready applications.",
+      "knowledgeGained": [
+        "How to proficiently write and read TypeScript/JavaScript.",
+        "How to utilize the MERN Stack (MongoDB, Express.js, React.js, Node.js) to develop professional-grade Web Apps.",
+        "How to utilize GraphQL to facilitate communication between a client and a server.",
+        "How to proficiently create SCSS/CSS styles to beautify a Web App."
+      ],
+      "achievements": [
+        "Ability to quickly pick up and competently utilize the technology stack for the project was commended by team lead.",
+        "Played an active role in design decisions: researched, reviewed, and wrote detailed reports regarding potential techniques and technologies to accomplish feature goals.",
+        "Took on leadership responsibilities: provided strong communication with the client, delegated and accepted tasks according to team strengths, and trained team members on relevant technologies."
+      ],
+      "achievements_archived": [
+        "Performed as acting lead developer: communicated directly with customer regarding estimations, issues, and new feature or bug requests; organized and delegated tasks according to team strengths and abilities; trained team members on relevant technologies as the need arose.",
+        "Commended by team lead for ability to quickly pick up the necessary skills to competently and confidently complete development tasks related to the project (little prior JavaScript/TypeScript experience)."
+      ]
+    },
+    {
+      "name": "C++ Desktop Simulation Application",
+      "techStack": ["C++17", "Boost", "QT"],
+      "length": "3 months",
+      "summary": "A desktop application for a large automotive OEM intended to simulate and evaluate the efficacy of products with minimal risk.",
+      "knowledgeGained": [
+        "How to take advantage of C++17's many useful STL additions.",
+        "How to utilize Google's C++ testing and mocking framework.",
+        "How to use Qt's libraries for simple and fast XML parsing.",
+        "How to utilize the principle of separation of responsibilities to keep code clean and robust.",
+        "How to use Test Driven Development to develop maintainable code."
+      ],
+      "achievements": [
+        "Communicated effectively with an international team of developers to achieve project goals."
+      ]
+    }
+  ]
+}

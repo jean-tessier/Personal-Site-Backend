@@ -1,8 +1,9 @@
-import { Project } from '.';
+import { PersonalProject, ProfessionalProject } from '.';
 
 export const typeDef = `
 extend type Query {
-  projects: [Project!]
+  personalProjects: [Project!]
+  professionalProjects: [Project!]
 }
 
 type Project {
@@ -17,10 +18,15 @@ type Project {
 
 export const resolvers = {
   Query: {
-    projects: async () => {
-      const projects = await Project.find();
+    personalProjects: async () => {
+      const personalProjects = await PersonalProject.find();
 
-      return projects;
+      return personalProjects;
+    },
+    professionalProjects: async () => {
+      const professionalProjects = await ProfessionalProject.find();
+
+      return professionalProjects;
     },
   },
 };

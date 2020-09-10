@@ -18,4 +18,7 @@ const schema = new mongoose.Schema({
   achievements: [String],
 });
 
-export default mongoose.model('Project', schema);
+const PersonalProject = mongoose.model('PersonalProject', schema);
+const ProfessionalProject = mongoose.model('ProfessionalProject', schema);
+
+export { PersonalProject, ProfessionalProject };
