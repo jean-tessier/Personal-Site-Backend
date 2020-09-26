@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node 'dist/app.js'",
+    "start": "NODE_ENV=production node 'dist/app.js'",
     "build": "tsc -p . && copyfiles src/config/** dist/config/ -e '**/*.ts' -f",
     "start:dev": "yarn build:dev",
     "build:dev": "nodemon 'src/app.ts' --exec 'ts-node' src/server/ts -e ts,graphql"

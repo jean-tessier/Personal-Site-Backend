@@ -10,6 +10,7 @@ type Project {
   name: String!
   techStack: [String!]!
   knowledgeGained: [String!]!
+  summary: String!
   link: String
   length: String
   achievements: [String!]

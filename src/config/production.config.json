@@ -1,7 +1,9 @@
 {
   "ip": "127.0.0.1",
   "port": 3000,
+  "staticDir": "client",
   "database": {
-    "requiresAuthentication": true
+    "ip": "cluster0.6onwp.mongodb.net",
+    "name": "personal-site-production"
   }
 }

@@ -67,10 +67,17 @@ const configSchema = convict({
       default: 'development',
       env: 'DB_NAME',
     },
-    requiresAuthentication: {
-      doc: 'Whether or not the mongo server requires authentication to access',
-      format: Boolean,
-      default: false,
+    user: {
+        doc: 'The db user with which to connect to the mongo server',
+        format: String,
+        env: 'DB_USER',
+        default: undefined,
+    },
+    pass: {
+        doc: 'The password for the db user with which to connect to the mongo server',
+        format: String,
+        env: 'DB_PASS',
+        default: undefined,
     },
   },
 });

@@ -13,6 +13,10 @@ const schema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  summary: {
+    type: String,
+    required: true,
+  },
   link: String,
   length: String,
   achievements: [String],

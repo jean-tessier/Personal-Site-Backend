@@ -25,8 +25,6 @@ const loadConfig = () => {
   const configFile = selectConfigFile(config.get());
   if (!!configFile) config.loadFile(configFile);
 
-  console.log(config.get());
-
   config.validate();
 
   const staticDir = config.get('staticDir');
