@@ -3,7 +3,6 @@
   "port": 3000,
   "staticDir": "client",
   "database": {
-    "ip": "cluster0.6onwp.mongodb.net",
     "name": "personal-site-production"
   }
 }
