@@ -3,7 +3,8 @@
     "start": "NODE_ENV=production node 'dist/app.js'",
     "build": "tsc -p . && copyfiles src/config/** dist/config/ -e '**/*.ts' -f",
     "start:dev": "yarn build:dev",
-    "build:dev": "nodemon 'src/app.ts' --exec 'ts-node' src/server/ts -e ts,graphql"
+    "build:dev": "nodemon 'src/app.ts' --exec 'ts-node' src/server/ts -e ts,graphql",
+    "db:dev:reset": "ts-node seeder/seeder.ts -di"
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",
