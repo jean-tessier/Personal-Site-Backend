@@ -5,6 +5,9 @@ const defaultBaseQuery = `
     type Query {
         _empty: String
     }
+    type Mutation {
+      _empty: String
+    }
 `;
 
 const defaultBaseResolvers = {};

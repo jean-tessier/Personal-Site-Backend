@@ -4,18 +4,22 @@ import loadConfig from './utils/loadConfig';
 import startServer from './server';
 import generateGraphQLSchema from './utils/generateGraphQLSchema';
 import {
-  typeDef as Character,
-  resolvers as characterResolvers,
-} from './models/Character';
-import {
   typeDef as Project,
   resolvers as projectResolvers,
 } from './models/Project';
+import {
+  typeDef as User,
+  resolvers as userResolvers,
+} from './models/User';
+import {
+  typeDef as BlogPost,
+  resolvers as blogPostResolvers,
+} from './models/BlogPost';
 
 const config = loadConfig();
 
-const typeDefs = [Character, Project];
-const resolvers = [characterResolvers, projectResolvers];
+const typeDefs = [Project, User, BlogPost];
+const resolvers = [projectResolvers, userResolvers, blogPostResolvers];
 const graphqlSchema = generateGraphQLSchema(typeDefs, resolvers);
 
 const server = startServer(config, graphqlSchema);
