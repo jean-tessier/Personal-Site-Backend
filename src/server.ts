@@ -9,6 +9,7 @@ import 'colors';
 import connectDB from './utils/connectDB';
 import { ConfigType } from './config/config';
 import { GraphQLSchema } from 'graphql';
+import { getUserIdFromJWT, getUserRoleFromJWT } from './utils/authorization';
 
 const startServer = (config: ConfigType, graphqlSchema: GraphQLSchema) => {
   const dbConfig = config.database;
@@ -16,6 +17,10 @@ const startServer = (config: ConfigType, graphqlSchema: GraphQLSchema) => {
   const db = connectDB(dbConfig.ip, dbConfig.name, dbConfig.port);
   const app = express();
   const server = new ApolloServer({
+    context: (command: any) => ({
+      userId: getUserIdFromJWT(command?.req?.headers?.authorization as string),
+      role: getUserRoleFromJWT(command?.req?.headers?.authorization as string),
+    }),
     schema: graphqlSchema,
     validationRules: [depthLimit(7)],
   });
