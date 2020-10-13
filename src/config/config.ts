@@ -48,6 +48,20 @@ const configSchema = convict({
     default: defaultStaticDir,
     env: 'STATIC_DIR',
   },
+  jwt: {
+    secret: {
+      doc: 'The JWT secret key for JWT token authentication and authorization',
+      format: String,
+      default: 'my_secret_key',
+      env: 'JWT_SECRET', 
+    },
+    expirySeconds: {
+      doc: 'The time in seconds for a JWT before ending the JWT session',
+      format: Number,
+      default: 300,
+      env: 'JWT_EXPIRY_SECONDS',
+    },
+  },
   database: {
     ip: {
       doc: 'The IP address for the database connection',
