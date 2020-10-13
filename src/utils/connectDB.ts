@@ -12,6 +12,7 @@ const connectDB = async (host: string, db: string, port?: string) => {
   await mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   });
 
   mongoose.connection.once('open', (_) => {
