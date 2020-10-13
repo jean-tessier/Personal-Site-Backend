@@ -1,6 +1,7 @@
 import { BlogPost, IBlogPostDocument } from '.';
 import { User } from '../User';
 import { Model } from 'mongoose';
+import { isAuthorized } from '../../utils/authorization';
 
 export const typeDef = `
 extend type Query {
@@ -21,7 +22,13 @@ type BlogPost {
 input BlogPostInput {
   title: String!
   content: String!
-  visibility: String
+  visibility: BlogPostVisibility
+}
+
+enum BlogPostVisibility {
+  PUBLIC
+  PRIVATE
+  HIDDEN
 }
 `;
 
@@ -30,6 +37,11 @@ interface IPushBlogPostArgs {
 };
 
 export const resolvers = {
+  BlogPostVisibility: {
+    PUBLIC: 'public',
+    PRIVATE: 'private',
+    HIDDEN: 'hidden'
+  },
   Query: {
     blogPosts: async () => {
       var blogPosts = await BlogPost.find().populate('author');
@@ -45,6 +57,11 @@ export const resolvers = {
       if (!user)
       {
         throw new Error('Not logged in');
+      }
+
+      if (!isAuthorized(user, ['admin']))
+      {
+        throw new Error('User is not authorized to push blog posts');
       }
 
       const createdBlogPost = await BlogPost.create({

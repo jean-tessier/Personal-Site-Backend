@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { IUserDocument, UserRole } from '../models/User';
 import loadConfig from '../utils/loadConfig';
 
 interface IVerifiedUser {
@@ -41,7 +42,12 @@ const getUserRoleFromJWT = (fullToken: string) => {
     return null;
 }
 
+const isAuthorized = (user: IUserDocument, authorizedRoles: UserRole[]) => {
+    return authorizedRoles.includes(user.role);
+};
+
 export {
     getUserIdFromJWT,
     getUserRoleFromJWT,
+    isAuthorized,
 };

@@ -23,13 +23,15 @@ const schema = new mongoose.Schema({
   }
 });
 
+type UserRole = 'public' | 'family' | 'admin';
+
 interface IUserDocument extends mongoose.Document {
   email: string;
   name: string;
   password: string;
-  role: string;
+  role: UserRole;
 };
 
 const User = mongoose.model<IUserDocument>('User', schema);
 
-export { schema as UserSchema, User, IUserDocument };
+export { schema as UserSchema, User, IUserDocument, UserRole };
